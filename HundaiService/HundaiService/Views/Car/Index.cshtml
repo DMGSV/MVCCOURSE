@@ -1,7 +1,40 @@
-﻿
+﻿@using HundaiService.Models
+@model List<Car>;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CARS";
 }
 
-<h2>Index</h2>
+<h3>List Of Cars</h3>
 
+<table class="table">
+    <tr>
+        <th>
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Body Model
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyModel)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCar", new{})
+                @Html.ActionLink("Delete", "DeleteCar",new{})
+
+            </td>
+        </tr>
+    }
+</table>

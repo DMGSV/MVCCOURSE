@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace HundaiService.Controllers
 {
     public class CarController : Controller
     {
+        private readonly CarService1 _carservice;
         public CarController()
         {
 
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var cars = await _carservice.GetCars();
+            return View(cars);
         }
 
         public ActionResult AddCar()
